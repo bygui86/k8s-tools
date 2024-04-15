@@ -3,6 +3,24 @@
 
 A collection of tools useful to work on/with Kubernetes
 
+## List of tools
+
+- [x] busybox
+- [x] ubuntu
+- [x] debian
+- [x] gcloud
+- [x] kubectl
+- [x] kubectl + jq + yq
+- [x] terraform
+- [x] k8s-army-knife
+- [ ] git sync sidecar
+- [ ] `TBD` memory stress
+- [ ] `TBD` echo server
+- [ ] `TBD` http server + client
+- [ ] `TBD` grpc server + client
+
+---
+
 ## Base container images
 
 ### gcloud
@@ -24,7 +42,28 @@ A collection of tools useful to work on/with Kubernetes
 	- https://github.com/rancher/kubectl
 	- pure kubectl, no shell to execute scripts
 
-### busybox
+### default tools
 
 - busybox
+	- 1.36.1-uclibc (buildroot)
+	- 1.36.1-musl (alpine)
+	- 1.36.1-glibc (debian)
+- ubuntu:24.04
+- debian:12.5-slim
+- hashicorp/terraform:1.8
+- hashicorp/http-echo:1.0
 
+### networking
+
+- 
+
+### custom applications
+
+- bygui86/echo
+- bygui86/hello
+- bygui86/net-custom-tool
+- bygui86/k8s-army-knife
+- k8s-pod-logs-checker
+- script-executor
+- storage-filler
+- tcp-caller-listener
