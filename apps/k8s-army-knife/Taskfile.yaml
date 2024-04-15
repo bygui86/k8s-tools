@@ -1,0 +1,25 @@
+version: '3'
+
+tasks:
+
+  build:
+    desc: Build k8s-army-knife
+    requires:
+      vars: [ VERSION ]
+    cmds:
+      - docker buildx build . -f Dockerfile -t bygui86/k8s-army-knife:{{.VERSION}} --platform linux/amd64,linux/arm64
+      - docker buildx build . -f Dockerfile -t bygui86/k8s-army-knife:{{.VERSION}} --load
+
+  push:
+    desc: Push k8s-army-knife to container registry
+    requires:
+      vars: [ VERSION ]
+    cmds:
+      - docker push bygui86/k8s-army-knife:{{.VERSION}}
+
+  build-push:
+    desc: Build & push k8s-army-knife to container registry
+    requires:
+      vars: [ VERSION ]
+    cmds:
+      - docker buildx build . -f Dockerfile -t bygui86/k8s-army-knife:{{.VERSION}} --platform linux/amd64,linux/arm64 --push
