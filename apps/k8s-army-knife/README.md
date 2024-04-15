@@ -1,6 +1,8 @@
 
 # k8s-army-knife
 
+Current version: `1.0.0`
+
 Container image with some useful tools to work with Kubernetes.
 
 Container image base: `debian`
@@ -22,6 +24,17 @@ Installed tools:
 - [x] terraform
 - [x] netcat
 - [x] net-tools
+	- arp
+	- ifconfig
+	- ipmaddr
+	- iptunnel
+	- mii-tool
+	- nameif
+	- netstat
+	- plipconfig
+	- rarp
+	- route
+	- slattach
 - [x] iptables
 - [x] tcpdump
-- `TBD` other networking tools
+- [x] nmap

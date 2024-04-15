@@ -26,7 +26,8 @@ RUN apt-get update -qqy && \
 		netcat-openbsd \
 		net-tools \
 		iptables \
-		tcpdump && \
+		tcpdump \
+		nmap && \
 	apt-get autoclean && \
 	rm -rf /var/lib/apt/lists/*
 

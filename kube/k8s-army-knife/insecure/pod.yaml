@@ -13,7 +13,7 @@ spec:
 
   containers:
     - name: k8s-army-knife
-      image: bygui86/k8s-army-knife:0.0.1
+      image: bygui86/k8s-army-knife:1.0.0
       imagePullPolicy: Always
       command:
         - sleep
