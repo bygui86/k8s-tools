@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: terraform
+  labels:
+    app: terraform
+    domain: tools
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 15
+
+  containers:
+    - name: terraform
+      image: hashicorp/terraform:1.8
+      imagePullPolicy: Always
+      command:
+        - sleep
+        - "3600"
+      # args:
+      #   - # Type here
+      # env:
+      #   - name: KEY
+      #     value: value
+      resources:
+        requests:
+          cpu: 100m
+          memory: 64Mi
+        limits:
+          cpu: 100m
+          memory: 64Mi

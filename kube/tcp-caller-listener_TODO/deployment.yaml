@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sleepybox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sleepybox
+  template:
+    metadata:
+      labels:
+        app: sleepybox
+    spec:
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 15
+
+      # serviceAccountName: default
+      # securityContext:
+      #   runAsNonRoot: true
+      #   runAsUser: 1001
+      #   fsGroup: 1001
+      
+      containers:
+        - name: sleepybox
+          image: eu.gcr.io/ceiba-test-infrastructure/tools/sleepybox:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8600
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256M
+            limits:
+              cpu: 250m
+              memory: 256M
+          # securityContext:
+          #   runAsNonRoot: true
+          #   runAsUser: 1001
+      #     volumeMounts:
+      #       - name: data
+      #         mountPath: /usr/bin/data
+      # volumes:
+      #   - name: data
+      #     persistentVolumeClaim:
+      #         claimName: sample-pvc
+
+      nodeSelector:
+        kubernetes.io/os: linux
+      tolerations:
+        - operator: Exists
+          effect: NoSchedule
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #         - matchExpressions:
+      #             - key: dedicated
+      #               operator: In
+      #               values:
+      #                 - ???

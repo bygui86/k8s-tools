@@ -1,0 +1,37 @@
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: memory-demo
+#   # namespace: mem-example
+# spec:
+#   containers:
+#   - name: memory-demo-ctr
+#     # image: polinux/stress
+#     image: polinux/stress:1.0.4@sha256:b6144f84f9c15dac80deb48d3a646b55c7043ab1d83ea0a697c09097aaad21aa
+#     resources:
+#       requests:
+#         memory: 16Gi
+#       limits:
+#         memory: 20Gi
+#     command: ["stress"]
+#     args: ["--vm", "1", "--vm-bytes", "150M", "--vm-hang", "1"]
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-demo
+  # namespace: mem-example
+spec:
+  containers:
+  - name: memory-demo-ctr
+    # image: polinux/stress
+    # image: polinux/stress:1.0.4@sha256:b6144f84f9c15dac80deb48d3a646b55c7043ab1d83ea0a697c09097aaad21aa
+    image: ghcr.io/colinianking/stress-ng
+    resources:
+      requests:
+        memory: 16Gi
+      limits:
+        memory: 20Gi
+    command: ["stress"]
+    args: ["--vm", "1", "--vm-bytes", "150M", "--vm-hang", "1"]

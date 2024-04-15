@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logs-checker
+  labels:
+    app: logs-checker
+    domain: tools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logs-checker
+  template:
+    metadata:
+      labels:
+        app: logs-checker
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 15
+      serviceAccountName: log-reader
+      containers:
+        - name: kubectl
+          # bygui86
+          image: bygui86/kubectl:v1.29.3
+          # image: bygui86/kubectl:v1.28.8
+          # codefresh
+          # image: quay.io/codefresh/kubectl:1.29.2
+          # image: quay.io/codefresh/kubectl:1.28.4
+          # rancher
+          # image: rancher/kubectl:1.29.2
+          # image: rancher/kubectl:1.28.7
+          imagePullPolicy: Always
+          command: ["/bin/sh"]
+          args: ["-c", "while true; do kubectl logs -n $(NAMESPACE) -l $(LABEL) --since=1h > /home/data/log-$(date -u +'%Y-%m-%dT%H-%M-%SZ'); sleep 3600; done"]
+          # args: ["-c", "while true; do kubectl logs -n $(NAMESPACE) -l $(LABEL) --since=1h > /usr/local/bin/data/log-$(date -u +'%Y-%m-%dT%H-%M-%SZ'); sleep 3600; done"]
+          env:
+            - name: NAMESPACE
+              value: monitoring
+            - name: LABEL
+              value: app=grafana
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+          volumeMounts:
+            - name: data
+              mountPath: /home/data
+              # mountPath: /usr/local/bin/data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+              claimName: logs-checker

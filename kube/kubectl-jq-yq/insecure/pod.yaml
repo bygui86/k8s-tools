@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubectl-jq-yq
+  labels:
+    app: kubectl-jq-yq
+    domain: tools
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 15
+  
+  serviceAccountName: kubectl-admin
+
+  containers:
+    - name: kubectl-jq-yq
+      image: bygui86/kubectl-jq-yq:v1.29.3
+      # image: bygui86/kubectl-jq-yq:v1.28.8
+      imagePullPolicy: Always
+      command:
+        - sleep
+        - "3600"
+      # args:
+      #   - # Type here
+      # env:
+      #   - name: KEY
+      #     value: value
+      resources:
+        requests:
+          cpu: 100m
+          memory: 64Mi
+        limits:
+          cpu: 100m
+          memory: 64Mi
