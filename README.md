@@ -13,7 +13,9 @@ A collection of tools useful to work on/with Kubernetes
 - [x] kubectl + jq + yq
 - [x] terraform
 - [x] k8s-army-knife
+- [ ] `WIP` netshoot
 - [ ] git sync sidecar
+- [ ] `WIP` script executor
 - [ ] `TBD` memory stress
 - [ ] `TBD` echo server
 - [ ] `TBD` http server + client
@@ -52,17 +54,18 @@ A collection of tools useful to work on/with Kubernetes
 - debian:12.5-slim
 - hashicorp/terraform:1.8
 - hashicorp/http-echo:1.0
+	- https://hub.docker.com/r/hashicorp/http-echo
 
 ### networking
 
-- 
+- nicolaka/netshoot
+	- https://github.com/nicolaka/netshoot
 
 ### custom applications
 
+- bygui86/k8s-army-knife
 - bygui86/echo
 - bygui86/hello
-- bygui86/net-custom-tool
-- bygui86/k8s-army-knife
 - k8s-pod-logs-checker
 - script-executor
 - storage-filler
