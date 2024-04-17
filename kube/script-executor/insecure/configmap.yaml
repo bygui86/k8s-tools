@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: slim-shady
+data:
+  slim-shady.bash: |
+    #!/bin/bash
+
+    echo "Hi!"
+    sleep 1
+    echo "My name is"
+    echo "What?"
+    sleep 1
+    echo "My name is"
+    echo "Who?"
+    sleep 1
+    echo "My name is"
+    echo "Chika-chika"
+    sleep 1
+    echo "Slim Shady"
+    sleep 3600
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: curl-inf-loop
+  labels:
+    domain: tools
+data:
+  curl-inf-loop.sh: |
+    #!/bin/sh
+
+    apt-get update -qqy
+    apt-get upgrade -qqy
+    apt-get install -qqy curl
+    apt-get autoclean
+    rm -rf /var/lib/apt/lists/*
+
+    while [ true ]
+    do
+      curl --connect-timeout 3 --max-time 3 $HOST:$PORT/$ENDPOINT
+      sleep 1
+    done
