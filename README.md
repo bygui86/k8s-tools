@@ -13,11 +13,13 @@ A collection of tools useful to work on/with Kubernetes
 - [x] kubectl + jq + yq
 - [x] terraform
 - [x] k8s-army-knife
-- [ ] `WIP` netshoot
-- [ ] git sync sidecar
-- [ ] `WIP` script executor
+- [x] netshoot
+- [x] git sync sidecar
+- [x] script executor
+- [x] echo server
+- [ ] `TBD` storage filler
+- [ ] `TBD` tcp caller/listener
 - [ ] `TBD` memory stress
-- [ ] `TBD` echo server
 - [ ] `TBD` http server + client
 - [ ] `TBD` grpc server + client
 
