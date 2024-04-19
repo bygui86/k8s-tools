@@ -25,7 +25,7 @@ A collection of tools useful to work on/with Kubernetes
 
 ---
 
-## Base container images
+## Container images references
 
 ### gcloud
 
@@ -63,7 +63,7 @@ A collection of tools useful to work on/with Kubernetes
 - nicolaka/netshoot
 	- https://github.com/nicolaka/netshoot
 
-### custom applications
+### custom applications/scripts/containers
 
 - bygui86/k8s-army-knife
 - bygui86/echo
@@ -72,3 +72,4 @@ A collection of tools useful to work on/with Kubernetes
 - script-executor
 - storage-filler
 - tcp-caller-listener
+- https://github.com/ColinIanKing/stress-ng

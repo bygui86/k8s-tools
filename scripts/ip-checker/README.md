@@ -20,10 +20,11 @@ IP-checker makes some requests to a specific website to verify the source IP add
 
 ## Some well-known websites
 
-- ifconfig.co
-- httpbin.org/ip
-- ifconfig.me
-- ipecho.net/plain
+- https://ipecho.net/plain
+- https://checkip.amazonaws.com/
+- https://httpbin.org/ip
+- https://ifconfig.co/
+- https://ifconfig.me/
 
 ---
 
