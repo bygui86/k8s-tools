@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: grpc-client
+  labels:
+    app: grpc-client
+    domain: tools
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 15
+
+  containers:
+    - name: grpc-client
+      image: bygui86/grpc-client:v1.0.0
+      imagePullPolicy: Always
+      envFrom:
+        - configMapRef:
+            name: grpc-client
+      ports:
+        - name: metrics
+          containerPort: 9090
+      resources:
+        requests:
+          cpu: 100m
+          memory: 64Mi
+        limits:
+          cpu: 100m
+          memory: 64Mi

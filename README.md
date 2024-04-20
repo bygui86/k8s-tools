@@ -19,9 +19,9 @@ A collection of tools useful to work on/with Kubernetes
 - [x] echo server
 - [x] tcp caller/listener
 - [x] storage filler
+- [x] http server + client
+- [x] grpc server + client
 - [ ] `TBD` memory stress
-- [ ] `TBD` http server + client
-- [ ] `TBD` grpc server + client
 
 ---
 
@@ -34,7 +34,7 @@ A collection of tools useful to work on/with Kubernetes
 	- <MAJOR>.0.0-slim
 	- <MAJOR>.0.0-alpine
 
-### kubectl
+### k8s
 
 - bygui86/kubectl
 	- only latest of last 3 minor versions
@@ -45,6 +45,8 @@ A collection of tools useful to work on/with Kubernetes
 - rancher/kubectl
 	- https://github.com/rancher/kubectl
 	- pure kubectl, no shell to execute scripts
+
+- bygui86/k8s-army-knife:1.0.0
 
 ### default tools
 
@@ -60,14 +62,19 @@ A collection of tools useful to work on/with Kubernetes
 
 ### networking
 
-- nicolaka/netshoot
+- nicolaka/netshoot:v0.12
 	- https://github.com/nicolaka/netshoot
+
+### HTTP
+
+- bygui86/http-client:v1.0.0
+- bygui86/http-server:v1.0.0
+
+### gRPC
+
+- bygui86/grpc-client:v1.0.0
+- bygui86/grpc-server:v1.0.0
 
 ### custom applications/scripts/containers
 
-- bygui86/k8s-army-knife
-- k8s-pod-logs-checker
-- script-executor
-- storage-filler
-- tcp-caller-listener
 - https://github.com/ColinIanKing/stress-ng

@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-server
+  labels:
+    app: grpc-server
+    domain: tools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc-server
+      domain: tools
+  template:
+    metadata:
+      labels:
+        app: grpc-server
+        domain: tools
+    spec:
+      terminationGracePeriodSeconds: 15
+      containers:
+        - name: grpc-server
+          image: bygui86/grpc-server:v1.0.0
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: grpc-server
+          ports:
+            - name: grpc
+              containerPort: 50051
+            - name: metrics
+              containerPort: 9090
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+          # livenessProbe:
+          #   grpc:
+          #     port: 50051
+          #   initialDelaySeconds: 15
+          #   periodSeconds: 10
+          #   timeoutSeconds: 3
+          #   successThreshold: 1
+          #   failureThreshold: 3
+          # readinessProbe:
+          #   grpc:
+          #     port: 50051
+          #   initialDelaySeconds: 15
+          #   periodSeconds: 10
+          #   timeoutSeconds: 3
+          #   successThreshold: 1
+          #   failureThreshold: 3
