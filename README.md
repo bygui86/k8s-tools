@@ -18,8 +18,8 @@ A collection of tools useful to work on/with Kubernetes
 - [x] script executor
 - [x] echo server
 - [x] tcp caller/listener
+- [x] storage filler
 - [ ] `TBD` memory stress
-- [ ] `TBD` storage filler
 - [ ] `TBD` http server + client
 - [ ] `TBD` grpc server + client
 
