@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tcp-caller
+data:
+  tcp-caller.sh: |
+    #!/bin/sh
+    # TCP caller
+
+    echo "Start TCP caller to ${HOST}:${PORT}"
+    while [ true ]
+    do
+      echo ${MSG} | nc -v -q 0 ${HOST} ${PORT}
+      sleep 1
+    done
+    echo "TCP caller terminated"

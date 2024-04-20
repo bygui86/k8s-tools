@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tcp-caller
+  labels:
+    app: tcp-caller
+    domain: tools
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 15
+  
+  containers:
+    - name: netshoot
+      image: nicolaka/netshoot:v0.12
+      imagePullPolicy: Always
+      command:
+        # - sleep
+        # - "3600"
+        - /usr/local/bin/scripts/tcp-caller.sh
+      env:
+        - name: HOST
+          value: tcp-listener
+        - name: PORT
+          value: "8600"
+        - name: MSG
+          value: hello!
+      resources:
+        requests:
+          cpu: 50m
+          memory: 32Mi
+        limits:
+          cpu: 50m
+          memory: 32Mi
+      volumeMounts:
+        - name: tcp-caller
+          mountPath: /usr/local/bin/scripts/tcp-caller.sh
+          subPath: tcp-caller.sh
+
+  volumes:
+    - name: tcp-caller
+      configMap:
+        name: tcp-caller
+        defaultMode: 0777

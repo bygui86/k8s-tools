@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tcp-pinger
+data:
+  tcp-pinger.sh: |
+    #!/bin/sh
+    # TCP pinger
+
+    echo "Start TCP pinger to ${HOST}:${PORT}"
+    while [ true ]
+    do
+      nc -zv ${HOST} ${PORT}
+      sleep 1
+    done
+    echo "TCP pinger terminated"

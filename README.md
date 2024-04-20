@@ -17,9 +17,9 @@ A collection of tools useful to work on/with Kubernetes
 - [x] git sync sidecar
 - [x] script executor
 - [x] echo server
-- [ ] `TBD` storage filler
-- [ ] `TBD` tcp caller/listener
+- [x] tcp caller/listener
 - [ ] `TBD` memory stress
+- [ ] `TBD` storage filler
 - [ ] `TBD` http server + client
 - [ ] `TBD` grpc server + client
 
@@ -66,8 +66,6 @@ A collection of tools useful to work on/with Kubernetes
 ### custom applications/scripts/containers
 
 - bygui86/k8s-army-knife
-- bygui86/echo
-- bygui86/hello
 - k8s-pod-logs-checker
 - script-executor
 - storage-filler

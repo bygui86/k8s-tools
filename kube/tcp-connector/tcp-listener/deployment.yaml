@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tcp-listener
+  labels:
+    app: tcp-listener
+    domain: tools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tcp-listener
+      domain: tools
+  template:
+    metadata:
+      labels:
+        app: tcp-listener
+        domain: tools
+    spec:
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 15
+      containers:
+        - name: netshoot
+          image: nicolaka/netshoot:v0.12
+          imagePullPolicy: Always
+          command:
+            # - sleep
+            # - "3600"
+            - /usr/local/bin/scripts/tcp-listener.sh
+          env:
+            - name: PORT
+              value: "8600"
+          ports:
+            - name: tcp
+              containerPort: 8600
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 50m
+              memory: 32Mi
+          volumeMounts:
+            - name: tcp-listener
+              mountPath: /usr/local/bin/scripts/tcp-listener.sh
+              subPath: tcp-listener.sh
+
+      volumes:
+        - name: tcp-listener
+          configMap:
+            name: tcp-listener
+            defaultMode: 0777
