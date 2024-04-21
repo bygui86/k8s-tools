@@ -1,13 +1,16 @@
 
 # k8s-army-knife
 
-Current version: `1.0.0`
+## Description
+
+Current version: `1.1.0`
 
 Container image with some useful tools to work with Kubernetes.
 
 Container image base: `debian`
 
-Installed tools:
+## Installed tools
+
 - [x] ca-certificates
 - [x] curl
 - [x] wget
@@ -22,6 +25,7 @@ Installed tools:
 - [x] kustomize
 - [x] helm
 - [x] terraform
+- [x] stress
 - [x] netcat
 - [x] net-tools
 	- arp
@@ -38,3 +42,7 @@ Installed tools:
 - [x] iptables
 - [x] tcpdump
 - [x] nmap
+
+## Links
+
+- [stress](https://www.geeksforgeeks.org/linux-stress-command-with-examples/)

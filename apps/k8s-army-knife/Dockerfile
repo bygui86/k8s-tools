@@ -4,31 +4,39 @@
 FROM debian:12.5-slim@sha256:3d5df92588469a4c503adbead0e4129ef3f88e223954011c2169073897547cac
 
 # install packages
-## packages required by other tools:
-##   - gcloud: apt-transport-https, ca-certificates, gnupg, curl
-##   - terraform: software-properties-common, gnupg2
+## update and upgrade
 RUN apt-get update -qqy && \
-	apt-get upgrade -qqy && \
-	apt-get install -qqy \
-		ca-certificates \
+	apt-get upgrade -qqy
+## install base
+### packages required by other tools:
+###   - gcloud: apt-transport-https, ca-certificates, gnupg, curl
+###   - terraform: software-properties-common, gnupg2
+RUN apt-get install -qqy \
 		apt-transport-https \
+		ca-certificates \
 		gnupg \
 		software-properties-common \
 		gnupg2 \
 		curl \
-		wget \
-		httpie \
+		wget
+## install general
+RUN apt-get install -qqy \
 		jq \
 		yq \
 		vim \
 		nano \
+		stress
+## install networking
+RUN apt-get install -qqy \
+		httpie \
 		openssh-client \
 		netcat-openbsd \
 		net-tools \
 		iptables \
 		tcpdump \
-		nmap && \
-	apt-get autoclean && \
+		nmap
+## cleanup
+RUN apt-get autoclean && \
 	rm -rf /var/lib/apt/lists/*
 
 # install gcloud
@@ -74,11 +82,8 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
 	rm -rf /var/lib/apt/lists/* && \
 	terraform --version
 
-# TODO update path
-# ENV PATH "${PATH}:/usr/local/bin"
-
 # set user
 USER 1001
 
 # run
-ENTRYPOINT ["/bin/sh", "-c", "while :; do echo 'I will go to sleep for an hour, see ya later...'; sleep 3600; done"]
+# ENTRYPOINT ["/bin/sh", "-c", "while :; do echo 'I will go to sleep for an hour, see ya later...'; sleep 3600; done"]

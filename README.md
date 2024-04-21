@@ -46,7 +46,7 @@ A collection of tools useful to work on/with Kubernetes
 	- https://github.com/rancher/kubectl
 	- pure kubectl, no shell to execute scripts
 
-- bygui86/k8s-army-knife:1.0.0
+- bygui86/k8s-army-knife:1.1.0
 
 ### default tools
 
