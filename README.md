@@ -21,7 +21,7 @@ A collection of tools useful to work on/with Kubernetes
 - [x] storage filler
 - [x] http server + client
 - [x] grpc server + client
-- [ ] `TBD` memory stress
+- [x] stress resources
 
 ---
 
