@@ -17,7 +17,7 @@ spec:
         app: grpc-server
         domain: tools
     spec:
-      terminationGracePeriodSeconds: 15
+      terminationGracePeriodSeconds: 5
       containers:
         - name: grpc-server
           image: bygui86/grpc-server:v1.0.0

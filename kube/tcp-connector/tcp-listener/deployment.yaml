@@ -18,7 +18,7 @@ spec:
         domain: tools
     spec:
       restartPolicy: Always
-      terminationGracePeriodSeconds: 15
+      terminationGracePeriodSeconds: 5
       containers:
         - name: netshoot
           image: nicolaka/netshoot:v0.12

@@ -15,7 +15,7 @@ spec:
       labels:
         app: http-client
     spec:
-      terminationGracePeriodSeconds: 15
+      terminationGracePeriodSeconds: 5
       containers:
         - name: http-client
           image: bygui86/http-client:v1.0.0

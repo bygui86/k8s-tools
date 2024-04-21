@@ -21,7 +21,7 @@ spec:
         runAsGroup: 1001
         fsGroup: 1001
       restartPolicy: Always
-      terminationGracePeriodSeconds: 15
+      terminationGracePeriodSeconds: 5
       serviceAccountName: log-reader
       containers:
         - name: kubectl

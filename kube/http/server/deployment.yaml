@@ -15,7 +15,7 @@ spec:
       labels:
         app: http-server
     spec:
-      terminationGracePeriodSeconds: 15
+      terminationGracePeriodSeconds: 5
       containers:
         - name: http-server
           image: bygui86/http-server:v1.0.0

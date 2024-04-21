@@ -7,7 +7,7 @@ metadata:
     domain: tools
 spec:
   restartPolicy: Never
-  terminationGracePeriodSeconds: 15
+  terminationGracePeriodSeconds: 5
 
   containers:
     - name: echo-hashicorp
