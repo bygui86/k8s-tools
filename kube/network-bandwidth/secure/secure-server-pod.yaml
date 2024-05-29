@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: iperf-server
+  labels:
+    app: iperf
+    domain: tools
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 5
+  
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1001
+    runAsGroup: 1001
+    fsGroup: 1001
+  
+  containers:
+    - name: iperf
+      image: cagedata/iperf3:3.10.1
+      imagePullPolicy: Always
+      command:
+        - iperf3
+        # - -s
+      args:
+        - "-s"
+      ports:
+        - name: server
+          containerPort: 5201
+      resources:
+        requests:
+          cpu: 100m
+          memory: 64Mi
+        limits:
+          cpu: 100m
+          memory: 64Mi
+      securityContext:
+        privileged: false
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true

@@ -22,6 +22,7 @@ A collection of tools useful to work on/with Kubernetes
 - [x] http server + client
 - [x] grpc server + client
 - [x] stress resources
+- [x] network bandwidth (iperf3)
 
 ---
 
@@ -54,9 +55,13 @@ A collection of tools useful to work on/with Kubernetes
 	- 1.36.1-uclibc (buildroot)
 	- 1.36.1-musl (alpine)
 	- 1.36.1-glibc (debian)
+
 - ubuntu:24.04
+
 - debian:12.5-slim
+
 - hashicorp/terraform:1.8
+
 - hashicorp/http-echo:1.0
 	- https://hub.docker.com/r/hashicorp/http-echo
 
@@ -65,14 +70,20 @@ A collection of tools useful to work on/with Kubernetes
 - nicolaka/netshoot:v0.12
 	- https://github.com/nicolaka/netshoot
 
+- cagedata/iperf3:3.10.1
+	- https://medium.com/@muthanagavamsi/kubernetes-network-bandwidth-test-between-2-pods-a01a154ba07f
+	- https://hub.docker.com/r/cagedata/iperf3
+
 ### HTTP
 
 - bygui86/http-client:v1.0.0
+
 - bygui86/http-server:v1.0.0
 
 ### gRPC
 
 - bygui86/grpc-client:v1.0.0
+
 - bygui86/grpc-server:v1.0.0
 
 ### custom applications/scripts/containers

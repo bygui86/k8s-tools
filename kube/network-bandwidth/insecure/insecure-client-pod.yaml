@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: iperf-client
+  labels:
+    app: iperf
+    domain: tools
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 5
+
+  containers:
+    - name: iperf
+      image: cagedata/iperf3:3.10.1
+      imagePullPolicy: Always
+      command:
+        # - sleep
+        # - "3600"
+        # - "iperf3 -c 10.244.2.2 -p 5201"
+        - iperf3
+      args:
+        - "-c 10.244.2.2"
+        - "-p 5201"
+      resources:
+        requests:
+          cpu: 100m
+          memory: 64Mi
+        limits:
+          cpu: 100m
+          memory: 64Mi
