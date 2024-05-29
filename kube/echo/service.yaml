@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-hashicorp
+spec:
+  selector:
+    app: echo-hashicorp
+  ports:
+    - name: http
+      port: 5678
+      # port: 8080
+      targetPort: http
